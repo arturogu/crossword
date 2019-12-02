@@ -99,8 +99,6 @@
 							return false;
 						} else {
 
-							console.log('input keyup: '+solvedToggle);
-
 							puzInit.checkAnswer(e);
 
 						}
@@ -132,8 +130,6 @@
 					puzzEl.delegate('input', 'click', function(e) {
 						mode = "setting ui";
 						if (solvedToggle) solvedToggle = false;
-
-						console.log('input click: '+solvedToggle);
 
 						nav.updateByEntry(e);
 						e.preventDefault();
@@ -520,8 +516,6 @@
 						} else {
 							activePosition = classes[0].split('-')[1];
 						}
-
-						console.log('getActivePositionFromClassGroup activePosition: '+activePosition);
 
 				},
 
