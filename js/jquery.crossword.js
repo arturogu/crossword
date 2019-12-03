@@ -25,7 +25,7 @@
 
 			// append clues markup after puzzle wrapper div
 			// This should be moved into a configuration object
-			this.after('<div id="puzzle-clues"><h2>Horizontal</h2><ol id="across"></ol><h2>Vertical</h2><ol id="down"></ol></div>');
+			this.after('<div id="puzzle-clues"><h2>Horizontal</h2><ul id="across"></ul><h2>Vertical</h2><ul id="down"></ul></div>');
 
 			// initialize some variables
 			var tbl = ['<table id="puzzle">'],
@@ -187,7 +187,7 @@
 						}
 
 						// while we're in here, add clues to DOM!
-						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>');
+						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">'+ puzz.data[i].position + ". " + puzz.data[i].clue + '</li>');
 					}
 
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
@@ -257,7 +257,7 @@
 					};
 
 					// Put entry number in first 'light' of each entry, skipping it if already present
-					for (var i=1, j=0, p = entryCount; i < p; ++i) {
+					for (var i=1, j=0, p = entryCount; i < p; i++) {
 						$groupedLights = $('.entry-' + i);
 						if(!$('.entry-' + i +':eq(0) span').length){
 							$groupedLights.eq(0)
@@ -517,7 +517,6 @@
 						} else {
 							activePosition = classes[0].split('-')[1];
 						}
-
 				},
 
 				checkSolved: function(valToCheck) {
