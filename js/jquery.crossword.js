@@ -257,12 +257,13 @@
 					};
 
 					// Put entry number in first 'light' of each entry, skipping it if already present
-					for (var i=1, p = entryCount; i < p; ++i) {
+					for (var i=1, j=0, p = entryCount; i < p; ++i) {
 						$groupedLights = $('.entry-' + i);
 						if(!$('.entry-' + i +':eq(0) span').length){
 							$groupedLights.eq(0)
-								.append('<span>' + puzz.data[i].position + '</span>');
+								.append('<span>' + puzz.data[j].position + '</span>');
 						}
+						puzz.data[j].position == puzz.data[j+1].position ? j+=2 : j++;
 					}
 
 					util.highlightEntry();
