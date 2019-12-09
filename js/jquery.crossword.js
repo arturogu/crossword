@@ -25,7 +25,7 @@
 
 			// append clues markup after puzzle wrapper div
 			// This should be moved into a configuration object
-			this.after('<div id="puzzle-clues"><h2>Horizontal</h2><ul id="across"></ul><h2>Vertical</h2><ul id="down"></ul></div>');
+			this.after('<div id="puzzle-clues"><div><h2>Horizontal</h2><hr><ul id="across"></ul></div><div><h2>Vertical</h2><hr><ul id="down"></ul></div></div>');
 
 			// initialize some variables
 			var tbl = ['<table id="puzzle">'],
@@ -187,7 +187,7 @@
 						}
 
 						// while we're in here, add clues to DOM!
-						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">'+ puzz.data[i].position + ". " + puzz.data[i].clue + '</li>');
+						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '"><div class="clueNo">'+ puzz.data[i].position + '</div><div class="clues-txt">' + puzz.data[i].clue + '</div></li>');
 					}
 
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
@@ -295,7 +295,6 @@
 						.get()
 						.join('');
 
-					//console.log(currVal + " " + valToCheck);
 					if(valToCheck === currVal){
 						$('.active')
 							.addClass('done')
@@ -309,10 +308,6 @@
 					}
 
 					currOri === 'across' ? nav.nextPrevNav(e, 39) : nav.nextPrevNav(e, 40);
-
-					//z++;
-					//console.log(z);
-					//console.log('checkAnswer() solvedToggle: '+solvedToggle);
 
 				}
 
@@ -338,8 +333,6 @@
 					$('.current').removeClass('current');
 
 					selector = '.position-' + activePosition + ' input';
-
-					//console.log('nextPrevNav activePosition & struck: '+ activePosition + ' '+struck);
 
 					// move input focus/select to 'next' input
 					switch(struck) {
@@ -407,7 +400,6 @@
 					currOri = $('.clues-active').parent('ol').prop('id');
 
 					activeClueIndex = $(clueLiEls).index(e.target);
-					//console.log('updateByNav() activeClueIndex: '+activeClueIndex);
 
 				},
 
@@ -444,9 +436,6 @@
 
 						util.highlightEntry();
 						util.highlightClue();
-
-						//$actives.eq(0).addClass('current');
-						//console.log('nav.updateByEntry() reports activePosition as: '+activePosition);
 				}
 
 			}; // end nav object
