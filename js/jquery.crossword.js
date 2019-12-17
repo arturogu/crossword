@@ -304,6 +304,9 @@
 
 						solved.push(valToCheck);
 						solvedToggle = true;
+
+						if(solved.length === entryCount) alert("¡Lo lograste, Felicidades!")
+
 						return;
 					}
 
