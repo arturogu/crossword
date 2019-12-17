@@ -100,6 +100,8 @@
 						} else {
 
 							puzInit.checkAnswer(e);
+							
+							if(solved.length === entryCount) alert("¡Lo lograste, Felicidades!");
 
 						}
 
@@ -302,10 +304,10 @@
 
 						$('.clues-active').addClass('clue-done');
 
-						solved.push(valToCheck);
-						solvedToggle = true;
-
-						if(solved.length === entryCount) alert("¡Lo lograste, Felicidades!")
+						if(!solved.includes(currVal)) {
+							solved.push(valToCheck);
+							solvedToggle = true;
+						}
 
 						return;
 					}
